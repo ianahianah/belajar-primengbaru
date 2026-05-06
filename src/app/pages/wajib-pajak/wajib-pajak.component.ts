@@ -8,9 +8,10 @@ import { PajakService, WajibPajak } from '../../sevices/pajak.service';
   styleUrls: ['./wajib-pajak.component.css']
 })
 export class WajibPajakComponent {
+ 
  list: WajibPajak[] = [];
 
-   constructor(private pajak: PajakService) {
+   constructor(public pajak: PajakService) {
     this.list = this.pajak.getAll();
   }
  get totalPenghasilan() { 
@@ -22,6 +23,49 @@ export class WajibPajakComponent {
   hitungPajak(v: number)  { 
     return this.pajak.hitungPajak(v); }
 
-  
+   add() {
+    const form =this.pajak.form;
+    if(!form.nama ||!form.npwp || form.penghasilan <= 0  ){
+      alert('Isi data dengan benar!');
+      return;
+    }
+
+    this.pajak.add(form);
+    this.list = [...this.pajak.getAll()];
+    this.pajak.form={
+      nama:'',
+      npwp:'',
+      penghasilan:0
+    };
+  }
+
+ editingId:number |null=null;
+ editCache:any={};
+
+ startEdit(wp:WajibPajak){
+  this.editingId=wp.id;
+  this.editCache={...wp};
+ }
+
+ cancelEdit(){
+  this.editingId=null;
+  this.editCache={};
+ }
+
+ saveEdit(){
+  const index = this.list.findIndex(x => x.id === this.editingId);
+  if(index !== 1){
+    this.list[index] = {...this.editCache};
+  }
+  this.editingId=null;
+  this.editCache={};
+ }
+
+ delete(id:number){
+  const confirmDelete = confirm('Apakah Anda yakin mau menghapus data ini');
+  if(!confirmDelete) return;
+
+  this.list = this.list .filter(item=>item.id !==id);
+ }
 
 }

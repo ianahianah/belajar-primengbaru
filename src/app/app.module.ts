@@ -10,6 +10,8 @@ import { NavbarComponent } from './layout/navbar/navbar.component';
 import { DashboarComponent } from './pages/dashboar/dashboar.component';
 import { WajibPajakComponent } from './pages/wajib-pajak/wajib-pajak.component';
 import { LaporanComponent } from './pages/laporan/laporan.component';
+import { FormsModule } from '@angular/forms';
+import { InputTextModule } from 'primeng/inputtext';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { LaporanComponent } from './pages/laporan/laporan.component';
     AppRoutingModule,
     ButtonModule,
     CardModule,
-    MenubarModule
+    MenubarModule,
+    FormsModule,
+    InputTextModule
   ],
   providers: [],
   bootstrap: [AppComponent]
