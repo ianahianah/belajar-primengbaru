@@ -43,16 +43,16 @@ export class AppComponent {
   //   return this.wajibPajak.length;
   // }
 
-  get totalPenghasilan() {
-    return this.wajibPajak.reduce((a, b) => a + b.penghasilan, 0);
-  }
+  // get totalPenghasilan() {
+  //   return this.wajibPajak.reduce((a, b) => a + b.penghasilan, 0);
+  // }
 
-  hitungPajak(p: number) {
-    return p * 0.1;
-  }
+  // hitungPajak(p: number) {
+  //   return p * 0.1;
+  // }
 
-  totalPajak() {
-    return this.wajibPajak.reduce((a, b) => a + this.hitungPajak(b.penghasilan), 0);
-  }
+  // totalPajak() {
+  //   return this.wajibPajak.reduce((a, b) => a + this.hitungPajak(b.penghasilan), 0);
+  // }
 
 }

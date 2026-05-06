@@ -39,7 +39,7 @@ export class PajakService {
   formatRupiah(value:number):string{
     return 'Rp ' + value.toLocaleString("id-ID");
   }
-  constructor() { }
+  // constructor() { }
 }
 
 
